@@ -39,6 +39,7 @@ class FrontendMessage.Startup extends FrontendMessage
   protocol: 3 << 16
 
   constructor: (@user, @database, @options) ->
+    super()
 
   payload: ->
     pos = 0
@@ -76,6 +77,7 @@ class FrontendMessage.Password extends FrontendMessage
   typeId: 112
 
   constructor: (@password, @authMethod, @options) ->
+    super()
     @password   ?= ''
     @authMethod ?= Authentication.methods.CLEARTEXT_PASSWORD
     @options    ?= {}
@@ -103,6 +105,7 @@ class FrontendMessage.CancelRequest extends FrontendMessage
   cancelRequestMagicNumber: 80877102
 
   constructor: (@backendPid, @backendKey) ->
+    super()
 
   payload: ->
     b = new Buffer(12)
@@ -115,6 +118,7 @@ class FrontendMessage.Close extends FrontendMessage
   typeId: 67
 
   constructor: (type, @name) ->
+    super()
     @name ?= ""
     @type = switch type
       when 'portal', 'p', 'P', 80 then 80
@@ -132,6 +136,7 @@ class FrontendMessage.Describe extends FrontendMessage
   typeId: 68
 
   constructor: (type, @name) ->
+    super()
     @name ?= ""
     @type = switch type
       when 'portal', 'P', 80 then 80
@@ -149,6 +154,7 @@ class FrontendMessage.Execute extends FrontendMessage
   typeId: 69
 
   constructor: (@portal, @maxRows) ->
+    super()
     @portal  ?= ""
     @maxRows ?= 0
 
@@ -164,6 +170,7 @@ class FrontendMessage.Query extends FrontendMessage
   typeId: 81
 
   constructor: (@sql) ->
+    super()
 
   payload: ->
     @sql
@@ -172,6 +179,7 @@ class FrontendMessage.Parse extends FrontendMessage
   typeId: 80
 
   constructor: (@name, @sql, @parameterTypes) ->
+    super()
     @name ?= ""
     @parameterTypes ?= []
 
@@ -193,6 +201,7 @@ class FrontendMessage.Bind extends FrontendMessage
   typeId: 66
 
   constructor: (@portal, @preparedStatement, parameterValues) ->
+    super()
     @parameterValues = []
     for parameterValue in parameterValues
       @parameterValues.push parameterValue.toString()
@@ -231,6 +240,7 @@ class FrontendMessage.CopyData extends FrontendMessage
   typeId: 100
 
   constructor: (@data) ->
+    super()
 
   payload: ->
     new Buffer(@data)
@@ -244,6 +254,7 @@ class FrontendMessage.CopyFail extends FrontendMessage
   typeId: 102
 
   constructor: (@error) ->
+    super()
 
   payload: ->
     @error

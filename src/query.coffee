@@ -7,6 +7,7 @@ errors          = require('./errors')
 class Query extends EventEmitter
 
   constructor: (@connection, @sql, @callback) ->
+    super()
     @_handlingCopyIn = false
 
   run: () ->

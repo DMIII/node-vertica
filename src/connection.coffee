@@ -11,6 +11,7 @@ errors          = require('./errors')
 class Connection extends EventEmitter
 
   constructor: (@connectionOptions) ->
+    super()
     @connectionOptions.host        ?= 'localhost'
     @connectionOptions.port        ?= 5433
     @connectionOptions.ssl         ?= 'optional'

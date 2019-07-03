@@ -1,6 +1,7 @@
 class exports.VerticaError extends Error
-  constructor: (@message) ->
-    super(@message)
+  constructor: (message) ->
+    super(message)
+    @message = message
 
 class exports.ConnectionError extends exports.VerticaError
 class exports.ConnectionErrorResponse extends exports.ConnectionError
